@@ -32,7 +32,7 @@ $autocomplete = (isset($configValues['CONFIG_IFACE_AUTO_COMPLETE']) &&
 $cat_subcat_tree = array(
                             "home" => array(),
                             "mng" => array( "batch", "hs", "rad-nas", "rad-usergroup", "rad-groups",
-                                            "rad-profiles", "rad-hunt", "rad-attributes", "rad-realms", "rad-ippool", ),
+                                            "rad-profiles", "rad-hunt", "rad-attributes", "rad-realms", "rad-ippool", "print", ),
                             "rep" => array( "logs", "stat", "batch", "hb", ),
                             "acct" => array( "plans", "custom", "hotspot", "maintenance", ),
                             "bill" => array( "plans", "rates", "merchant", "history", "invoice", "payments", ),

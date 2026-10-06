@@ -89,6 +89,11 @@ Operator LDAP authentication requires
 operator passwords and can be applied repeatedly. The current web-container
 entrypoint also applies this migration automatically on startup.
 
+The operator ticket-printing feature requires the
+`userbillinfo.printed` column. The web-container entrypoint applies
+`contrib/db/migrations/2026-10-userbillinfo-printed.sql` automatically on
+startup when that column is missing, for both new and upgraded databases.
+
 For example, to apply the operator MFA migration from the directory that contains `docker-compose.yml`:
 
 ```bash

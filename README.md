@@ -20,6 +20,8 @@ To install daloRADIUS, you can follow the installation guide available in the pr
 
 Alternatively, you can also find the installation guide in the `doc/install` folder of this repository.
 
+The operator ticket-printing page requires PHP's `intl` extension and the Composer dependencies declared in `composer.json`. On Ubuntu/Debian, install the extension with `sudo apt install php-intl` and restart Apache (`sudo systemctl restart apache2`). Run `composer install` from the repository root after upgrading an existing non-Docker deployment, and apply the database migration in `contrib/db/migrations/2026-10-userbillinfo-printed.sql`. The quick installer and Docker images install the dependencies automatically.
+
 If you encounter any issues during the installation or have any questions, feel free to ask for support in the [Issues](../../issues) section.
 
 ## Documentation

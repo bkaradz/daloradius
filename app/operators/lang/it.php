@@ -638,6 +638,8 @@ $l['button']['MailSettings'] = "Impostazioni Mail";
 $l['button']['Batch'] = "Batch";
 $l['button']['BatchHistory'] = "Storico Batch";
 $l['button']['BatchDetails'] = "Dettagli Batch";
+$l['button']['SelectBatch'] = "Seleziona Batch";
+$l['button']['PrintSelected'] = "Stampa selezionati";
 
 $l['button']['ListRates'] = "Mostra Tariffe";
 $l['button']['NewRate'] = "Nuova Tariffa";
@@ -1001,6 +1003,7 @@ $l['submenu']['Payments'] = "Payments";
 $l['submenu']['Custom'] = "Custom";
 $l['submenu']['Hotspot'] = "Hotspot";
 $l['submenu']['Mail'] = "Mail";
+$l['submenu']['Printing'] = "Stampa";
 
 /* **********************************************************************************
  * Sidebar
@@ -1012,6 +1015,7 @@ $l['sidebar']['Accounting'] = "Accounting";
 $l['sidebar']['AttributesManagement'] = "Gestione Attributi";
 $l['sidebar']['BackupSettings'] = "Impostazioni Backup";
 $l['sidebar']['BatchManagement'] = "Gestione Batch";
+$l['sidebar']['BatchToPrint'] = "Batch da stampare";
 $l['sidebar']['BatchUsers'] = "Utenti Batch";
 $l['sidebar']['Billing'] = "Fatturazione";
 $l['sidebar']['CRONStatus'] = "Stato CRON";
@@ -1334,6 +1338,7 @@ $l['Intro']['mngedit.php'] = "Modifica Dettagli Utente";
 $l['Intro']['mnglistall.php'] = "Mostra Utenti";
 $l['Intro']['mngmain.php'] = "Gestione Utenti e Hotspot";
 $l['Intro']['mngbatch.php'] = "Crea Utenti batch";
+$l['Intro']['mngprint.php'] = "Gestione Stampa";
 $l['Intro']['mngnew.php'] = "Nuovo Utente";
 $l['Intro']['mngnewquick.php'] = "Aggiungi Utente Velocemente";
 $l['Intro']['mngsearch.php'] = "Cerca Utente";

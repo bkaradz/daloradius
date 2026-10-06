@@ -1,0 +1,6 @@
+{
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "mike42/escpos-php": "^4.0"
+    }
+}

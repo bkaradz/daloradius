@@ -648,6 +648,8 @@ $l['button']['MailSettings'] = "Mail Settings";
 $l['button']['Batch'] = "Batch";
 $l['button']['BatchHistory'] = "Batch History";
 $l['button']['BatchDetails'] = "Batch Details";
+$l['button']['SelectBatch'] = "Select Batch";
+$l['button']['PrintSelected'] = "Print Selected";
 
 $l['button']['ListRates'] = "List Rates";
 $l['button']['NewRate'] = "New Rate";
@@ -942,6 +944,7 @@ $l['submenu']['Payments'] = "Payments";
 $l['submenu']['Custom'] = "Custom";
 $l['submenu']['Hotspot'] = "Hotspot";
 $l['submenu']['Mail'] = "Mail";
+$l['submenu']['Printing'] = "Printing";
 
 /* **********************************************************************************
  * Sidebar
@@ -953,6 +956,7 @@ $l['sidebar']['Accounting'] = "Accounting";
 $l['sidebar']['AttributesManagement'] = "Attributes Management";
 $l['sidebar']['BackupSettings'] = "Backup Settings";
 $l['sidebar']['BatchManagement'] = "Batch Management";
+$l['sidebar']['BatchToPrint'] = "Batch to Print";
 $l['sidebar']['BatchUsers'] = "Batch Users";
 $l['sidebar']['Billing'] = "Billing";
 $l['sidebar']['CRONStatus'] = "CRON Status";
@@ -1275,6 +1279,7 @@ $l['Intro']['mngedit.php'] = "Edit User Details";
 $l['Intro']['mnglistall.php'] = "Users Listing";
 $l['Intro']['mngmain.php'] = "Users and Hotspots Management";
 $l['Intro']['mngbatch.php'] = "Batch Users Management";
+$l['Intro']['mngprint.php'] = "Printing Management";
 $l['Intro']['mngnew.php'] = "New User";
 $l['Intro']['mngnewquick.php'] = "Quick User Add";
 $l['Intro']['mngsearch.php'] = "User Search";
@@ -2056,4 +2061,3 @@ $l['helpPage']['gismain'] = <<<EOF
     <li>in <strong>Edit MAP</strong> mode, you can visually add new hotspots to the map by left-clicking on any clear location, or remove existing hotspots by left-clicking on their icons.</li>
 </ul>
 EOF;
-

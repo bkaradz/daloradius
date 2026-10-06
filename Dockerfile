@@ -24,6 +24,7 @@ ENV TZ=Europe/Vienna
 RUN apt-get update \
   && apt-get install --yes --no-install-recommends \
   ca-certificates \
+  unzip \
   freeradius-utils \
   tzdata \
   apache2 \
@@ -35,12 +36,14 @@ RUN apt-get update \
   php-gd \
   php-cli \
   php-curl \
+  php-intl \
   php-ldap \
   php-mail \
   php-mail-mime \
   php-mbstring \
   php-db \
   php-mysql \
+  composer \
   mariadb-client \
   && rm -rf /var/lib/apt/lists/*
 
@@ -54,6 +57,7 @@ RUN a2dissite 000-default.conf && \
 # /data should be mounted as volume to avoid recreation of database entries
 RUN mkdir /data
 COPY . /var/www/daloradius
+RUN composer install --working-dir=/var/www/daloradius --no-dev --prefer-dist --no-interaction --classmap-authoritative
 RUN rm -f /var/www/daloradius/app/operators/static /var/www/daloradius/app/users/static \
   && ln -s ../common/static /var/www/daloradius/app/operators/static \
   && ln -s ../common/static /var/www/daloradius/app/users/static \

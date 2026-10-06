@@ -10,6 +10,7 @@
 *.sql.gz
 data/
 internal_data/
+vendor/
 var/log/
 var/backup/
 app/common/includes/daloradius.conf.php

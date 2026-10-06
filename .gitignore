@@ -8,9 +8,11 @@ invoice_preview.html
 !.env.example
 data/
 internal_data/
+/vendor/
 
 var/log/*.log
 var/backup/*.sql
 var/backup/*.sql.gz
 app/common/includes/daloradius.conf.php
 app/common/library/htmlpurifier/HTMLPurifier/DefinitionCache/Serializer/HTML/*
+__pycache__/

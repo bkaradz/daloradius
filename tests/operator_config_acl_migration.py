@@ -109,13 +109,13 @@ INSERT INTO operators_acl (operator_id, file, access) VALUES
         sql(migration)
         sql(migration)
 
-        required = "'config_mail_settings','config_mail_testing','config_messages'"
+        required = "'config_mail_settings','config_mail_testing','config_messages','mng_print'"
         assert scalar(
             f"SELECT COUNT(*) FROM operators_acl_files WHERE file IN ({required})"
-        ) == "3"
+        ) == "4"
         assert scalar(
             f"SELECT COUNT(DISTINCT file) FROM operators_acl_files WHERE file IN ({required})"
-        ) == "3"
+        ) == "4"
         assert scalar(
             "SELECT COUNT(*) FROM operators_acl_files WHERE file='config_mail'"
         ) == "1"
@@ -131,24 +131,27 @@ ORDER BY operators.id, operators_acl.file;
             "administrator\tconfig_mail_settings\t1",
             "administrator\tconfig_mail_testing\t1",
             "administrator\tconfig_messages\t1",
+            "administrator\tmng_print\t1",
             "limited-operator\tconfig_mail_settings\t0",
             "limited-operator\tconfig_mail_testing\t0",
             "limited-operator\tconfig_messages\t0",
+            "limited-operator\tmng_print\t0",
             "existing-denial\tconfig_mail_settings\t0",
             "existing-denial\tconfig_mail_testing\t0",
             "existing-denial\tconfig_messages\t0",
+            "existing-denial\tmng_print\t0",
         ], rows
 
         assert scalar(
             f"SELECT COUNT(*) FROM operators_acl WHERE file IN ({required})"
-        ) == "9"
+        ) == "12"
         assert scalar("""
 SELECT COUNT(*)
 FROM operators_acl_files AS opf
 LEFT JOIN operators_acl AS opa ON opf.file = opa.file
 WHERE opa.operator_id = 2
-  AND opf.file IN ('config_mail_settings','config_mail_testing','config_messages');
-""") == "3"
+  AND opf.file IN ('config_mail_settings','config_mail_testing','config_messages','mng_print');
+""") == "4"
         assert scalar("""
 SELECT access FROM operators_acl
 WHERE operator_id = 1 AND file = 'config_messages';

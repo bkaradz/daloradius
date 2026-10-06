@@ -477,8 +477,8 @@ freeradius_enable_restart() {
 # Function to install daloRADIUS and required packages
 daloradius_install_dep() {
     echo -n "[+] Installing daloRADIUS dependencies... "
-    apt --no-install-recommends install apache2 php libapache2-mod-php php-mysql php-mbstring php-common php-curl \
-                                        php-gd php-ldap php-db php-mail php-mail-mime freeradius-utils git rsyslog -y >/dev/null 2>&1 &
+    apt --no-install-recommends install apache2 php libapache2-mod-php php-mysql php-mbstring php-common php-curl unzip \
+                                        php-intl php-gd php-ldap php-db php-mail php-mail-mime composer freeradius-utils git rsyslog -y >/dev/null 2>&1 &
     print_spinner $!
     wait $!
     if [ $? -ne 0 ]; then
@@ -522,6 +522,12 @@ daloradius_installation() {
             exit 1
         fi
 
+    fi
+
+    if ! composer install --working-dir="${DALORADIUS_ROOT_DIR}" --no-dev --prefer-dist --no-interaction --classmap-authoritative >/dev/null 2>&1; then
+        print_red "KO"
+        print_red "[!] Failed to install daloRADIUS Composer dependencies. Aborting." >&2
+        exit 1
     fi
 
     print_green "OK"

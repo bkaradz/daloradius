@@ -554,6 +554,7 @@ INSERT INTO `operators_acl_files` (`file`, `category`, `section`) VALUES
 ('mng_list_all', 'Management', 'Users'),
 ('mng_new', 'Management', 'Users'),
 ('mng_new_quick', 'Management', 'Users'),
+('mng_print', 'Management', 'Printing'),
 ('mng_rad_attributes_del', 'Management', 'Attributes'),
 ('mng_rad_attributes_edit', 'Management', 'Attributes'),
 ('mng_rad_attributes_import', 'Management', 'Attributes'),

@@ -337,6 +337,28 @@ function run_operator_ldap_migration {
     date > "$OPERATOR_LDAP_MIGRATION_MARKER"
 }
 
+function ensure_userbillinfo_printed_column {
+    if ! table_exists "userbillinfo"; then
+        return
+    fi
+
+    local printed_column_count
+    printed_column_count=$(mysql --defaults-extra-file="$MYSQL_DEFAULTS_FILE" --batch --skip-column-names "$MYSQL_DATABASE" <<'EOSQL'
+SELECT COUNT(*)
+FROM information_schema.columns
+WHERE table_schema = DATABASE()
+  AND table_name = 'userbillinfo'
+  AND column_name = 'printed';
+EOSQL
+)
+
+    if [ "$printed_column_count" -eq 0 ]; then
+        echo "Applying user ticket printing database migration."
+        mysql --defaults-extra-file="$MYSQL_DEFAULTS_FILE" "$MYSQL_DATABASE" \
+            < "$DALORADIUS_PATH/contrib/db/migrations/2026-10-userbillinfo-printed.sql"
+    fi
+}
+
 function ensure_operator_totp_columns {
     if ! table_exists "operators"; then
         return
@@ -366,10 +388,16 @@ EOSQL
 
     mysql --defaults-extra-file="$MYSQL_DEFAULTS_FILE" "$MYSQL_DATABASE" <<'EOSQL'
 INSERT IGNORE INTO operators_acl_files (file, category, section)
-VALUES ('config_operator_2fa', 'Configuration', 'Operators');
+VALUES ('config_operator_2fa', 'Configuration', 'Operators'),
+       ('mng_print', 'Management', 'Printing');
 
 INSERT IGNORE INTO operators_acl (operator_id, file, access)
 SELECT id, 'config_operator_2fa', 1
+FROM operators
+WHERE username = 'administrator';
+
+INSERT IGNORE INTO operators_acl (operator_id, file, access)
+SELECT id, 'mng_print', 1
 FROM operators
 WHERE username = 'administrator';
 EOSQL
@@ -416,6 +444,7 @@ fi
 
 ensure_operator_password_column
 run_operator_ldap_migration
+ensure_userbillinfo_printed_column
 ensure_operator_totp_columns
 
 # Start Apache2 in the foreground
